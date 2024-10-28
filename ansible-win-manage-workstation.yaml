@@ -1,0 +1,20 @@
+---
+- name: Set Windows desktop background from GitHub
+  hosts: localhost
+  tasks:
+    - name: Download wallpaper image from GitHub
+      ansible.builtin.get_url:
+        url: "https://raw.githubusercontent.com/doteater/sc-ansible/refs/heads/main/wallpaper1.jpg"
+        dest: "C:\\Users\\Public\\Pictures\\wallpaper.jpg"
+        force: yes
+
+    - name: Set the wallpaper in Windows Registry
+      ansible.windows.win_regedit:
+        path: HKCU:\Control Panel\Desktop
+        name: Wallpaper
+        value: "C:\\Users\\Public\\Pictures\\wallpaper.jpg"
+        type: string
+
+    - name: Refresh desktop to apply new wallpaper
+      ansible.windows.win_shell:
+        cmd: "RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters"
