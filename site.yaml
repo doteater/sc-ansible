@@ -1,6 +1,6 @@
 ---
 - name: Configure Windows Machine
-  hosts: windows
+  hosts: all
   tasks:
     - name: Install Chocolatey
       win_chocolatey:
