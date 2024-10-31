@@ -1,5 +1,5 @@
 - name: Disable LLMNR
-  hosts: all
+  hosts: localhost
   tasks:
     - name: Ensure LLMNR is disabled
       win_regedit:
