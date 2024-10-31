@@ -1,6 +1,6 @@
 ---
 - name: Configure Windows Machine
-  hosts: all
+  hosts: CORYJ-WIN-VM
   tasks:
     - name: Install Chocolatey
       win_chocolatey:
